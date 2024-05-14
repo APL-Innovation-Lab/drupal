@@ -1,0 +1,55 @@
+# System files
+*.DS_Store
+Thumbs.db
+
+# Editor files
+.editorconfig
+.gitattributes
+
+# Drupal-specific files
+html/.csslintrc
+html/.eslintignore
+html/.eslintrc.json
+html/.ht.router.php
+html/.htaccess
+html/INSTALL.txt
+html/README.md
+html/autoload.php
+html/example.gitignore
+html/index.php
+html/robots.txt
+html/update.php
+html/web.config
+
+# Ignore Drupal core entirely
+html/core/
+
+# Ignore libraries, modules, profiles, themes - manage these with Composer
+html/libraries/
+html/modules/
+html/profiles/
+html/themes/
+
+# Ignore sensitive and temporary files
+html/sites/*/settings*.php
+html/sites/*/services*.yml
+html/sites/example.settings.local.php
+html/sites/example.sites.php
+html/sites/development.services.yml
+
+# Ignore default files and directories
+html/sites/default/default.services.yml
+html/sites/default/default.settings.php
+
+# Files directories
+html/sites/default/files/
+html/sites/default/files/css/
+html/sites/default/files/js/
+html/sites/default/files/php/
+
+# Vendor directory (Composer dependencies)
+vendor/
+
+# Additional specific Drupal ignores
+html/sites/README.txt
+html/sites/*/files/.htaccess
