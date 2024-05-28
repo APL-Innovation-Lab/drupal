@@ -1,5 +1,5 @@
-uuid: bde1dceb-8f21-444a-891f-fd996a596086
-langcode: en
+uuid: cdbb9b72-a886-4c43-ae8c-299da2508a3c
+langcode: eng
 status: true
 dependencies: {  }
 _core:
@@ -7,4 +7,4 @@ _core:
 id: long
 label: 'Default long date'
 locked: false
-pattern: 'l, F j, Y - H:i'
+pattern: 'l, F j, Y - g:i A'

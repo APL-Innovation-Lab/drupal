@@ -3,8 +3,10 @@ langcode: eng
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.oakwood.title
     - field.field.node.oakwood.field_attendingphysician
     - field.field.node.oakwood.field_bywhomburied
+    - field.field.node.oakwood.field_cause_of_death_archival_an
     - field.field.node.oakwood.field_color
     - field.field.node.oakwood.field_disease
     - field.field.node.oakwood.field_firstname
@@ -12,6 +14,7 @@ dependencies:
     - field.field.node.oakwood.field_lastname_soundex
     - field.field.node.oakwood.field_name_archival_and_communit
     - field.field.node.oakwood.field_nativity
+    - field.field.node.oakwood.field_notes_about_research_condu
     - field.field.node.oakwood.field_oakwood_date
     - field.field.node.oakwood.field_pkoakwood
     - field.field.node.oakwood.field_profession
@@ -263,6 +266,21 @@ custom_sources:
     label: field_name_archival_and_communit
     machine_name: field_name_archival_and_communit
     type: csv
+  name_contribution:
+    value: name_contribution
+    label: name_contribution
+    machine_name: name_contribution
+    type: csv
+  disease_contribution:
+    value: disease_contribution
+    label: disease_contribution
+    machine_name: disease_contribution
+    type: csv
+  notes:
+    value: notes
+    label: notes
+    machine_name: notes
+    type: csv
 mappings:
   -
     target: field_pkoakwood
@@ -394,7 +412,20 @@ mappings:
   -
     target: field_name_archival_and_communit
     map:
-      value: field_name_archival_and_communit
+      value: name_contribution
     settings:
       language: null
     unique: {  }
+  -
+    target: field_cause_of_death_archival_an
+    map:
+      value: disease_contribution
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_notes_about_research_condu
+    map:
+      value: notes
+    settings:
+      language: null

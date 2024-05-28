@@ -1,12 +1,12 @@
-uuid: 3a4387c3-34f8-4340-bcbf-8287216a33a1
-langcode: en
+uuid: 6aa69394-3768-49e5-a5f5-f764845a1af6
+langcode: eng
 status: true
 dependencies:
   module:
     - block_content
     - user
 _core:
-  default_config_hash: jvd5Pu6jy-lra4oMr-mR7zuY6CVDv9CaNeoj0Y70gV4
+  default_config_hash: 2J0rd5cWfFsdSX-kAb0f9EzvC0_vn4NxGlUpOQAXeOU
 id: block_content
 label: 'Custom block library'
 module: views
@@ -282,7 +282,7 @@ display:
         type: basic
         options:
           submit_button: Apply
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true

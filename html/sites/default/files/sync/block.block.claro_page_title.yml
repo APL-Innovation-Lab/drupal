@@ -1,15 +1,17 @@
-uuid: 909460d6-ce5a-4d4b-8de8-656ba26f0ff2
-langcode: en
+uuid: 7a63170a-9b62-42ff-b762-34d00095ca12
+langcode: eng
 status: true
 dependencies:
+  module:
+    - node
   theme:
     - claro
 _core:
-  default_config_hash: fNwDdW063tk_ktzSWzZVeQS9wzvLooVO280BQ9WrsIs
+  default_config_hash: gfXKmThltk6eewwrjAEaxVPxzPEVHV1UfNjjOUQ5A7g
 id: claro_page_title
 theme: claro
 region: header
-weight: -30
+weight: -6
 provider: null
 plugin: page_title_block
 settings:
@@ -17,4 +19,13 @@ settings:
   label: 'Page title'
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      apl_site_content: apl_site_content
+      article: article
+      page: page

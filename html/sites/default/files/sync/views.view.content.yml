@@ -1,12 +1,15 @@
-uuid: af21d9d9-5e85-4314-8392-8c01ce0f3373
-langcode: en
+uuid: 1d980891-82a8-4aff-9594-e03b0c7f4b8c
+langcode: eng
 status: true
 dependencies:
+  config:
+    - user.role.authenticated
   module:
     - node
     - user
+    - views_autocomplete_filters
 _core:
-  default_config_hash: vBKWYGGDoAX-tFd1JErB8tZLSxx3lJ0foouVsgpcbB4
+  default_config_hash: P7F4DFe8BL31DRVqsvS-ix9KZZqvvaPjZ7zEvGo9yNM
 id: content
 label: Content
 module: node

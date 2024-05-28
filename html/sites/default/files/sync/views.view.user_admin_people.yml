@@ -1,11 +1,12 @@
-uuid: 3aefa6b6-2352-4b77-9cef-2051db81a723
-langcode: en
+uuid: c6d72811-c846-42c4-833c-fe17b1c11a10
+langcode: eng
 status: true
 dependencies:
   module:
     - user
+    - views_autocomplete_filters
 _core:
-  default_config_hash: njaZigMvB4ap21Fg_tQcJhWgYJCGNi49Z5rRL_N6RI0
+  default_config_hash: J5EbGNdz0YUaSIYKwomyFSOtZjsV9TrBA3qdb3ZwBS0
 id: user_admin_people
 label: People
 module: user
