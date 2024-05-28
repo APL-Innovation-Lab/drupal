@@ -1,11 +1,11 @@
-uuid: 18a7843f-1f67-46ab-afd7-be4d45887379
-langcode: en
+uuid: fb99e50a-2bd8-4bf9-90f7-5ff7cea8b723
+langcode: eng
 status: true
 dependencies:
   module:
     - views_ui
 _core:
-  default_config_hash: XIYL1KF7ND2XQRa5AxvEcp8vgCN2kUGiuBNhCgxrPME
+  default_config_hash: c-HMyZwgeP8H6AITDcq4hznePkd7azpe8xl_WTnx2O0
 id: views-ui
 label: 'View edit page'
 module: views_ui
@@ -33,7 +33,7 @@ tips:
     plugin: text
     label: 'View administration'
     weight: 3
-    position: right
+    position: left-start
     selector: '#views-display-extra-actions'
     body: 'Perform administrative tasks, including adding a description and creating a clone. Click the drop-down button to view the available options.'
   views-ui-format:
@@ -83,6 +83,6 @@ tips:
     plugin: text
     label: Preview
     weight: 10
-    position: right
+    position: left-start
     selector: '#preview-submit'
     body: 'Show a preview of the view output.'

@@ -1,12 +1,9 @@
-uuid: bbd32281-963e-4265-8443-8aae53c2e798
-langcode: en
+uuid: 72188d01-1a0f-441d-9f00-2bdcf41e6a91
+langcode: eng
 status: true
 dependencies:
   config:
     - comment.type.comment
-    - field.field.comment.comment.comment_body
-  module:
-    - text
 _core:
   default_config_hash: I0Pa0aQvT_jawlPo9oz4FE3h_ickc55dYKTPl6gILes
 id: comment.comment.default
@@ -17,14 +14,6 @@ content:
   author:
     weight: -2
     region: content
-  comment_body:
-    type: text_textarea
-    weight: 11
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 2
@@ -40,4 +29,5 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  comment_body: true

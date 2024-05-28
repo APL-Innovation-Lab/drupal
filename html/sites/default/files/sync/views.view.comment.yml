@@ -1,12 +1,13 @@
-uuid: 5f2beee8-078c-472c-b58a-9506a5047246
-langcode: en
+uuid: 13b4beea-891f-46e4-9d22-c44505ce12de
+langcode: eng
 status: true
 dependencies:
   module:
     - comment
     - user
+    - views_autocomplete_filters
 _core:
-  default_config_hash: CgXkKY33fd-yaHz89du2hSw6MJOoIeNUJ-VHE5BiSdQ
+  default_config_hash: fsBo_zgUeLyYZdghaw4PkOHA-HqFxu7wmQLilF35XYg
 id: comment
 label: Comments
 module: comment

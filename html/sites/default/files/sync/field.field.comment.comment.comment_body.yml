@@ -1,5 +1,5 @@
-uuid: 813bd2b0-29d1-478a-a379-3bd4e974c90d
-langcode: en
+uuid: ca5a682b-9504-4f70-861d-b596d2c5672e
+langcode: eng
 status: true
 dependencies:
   config:
@@ -16,7 +16,7 @@ bundle: comment
 label: Comment
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
