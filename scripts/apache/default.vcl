@@ -1,9 +1,9 @@
-vcl 4.0;
+vcl 4.1;
 import std;
 import directors;
 
 # This Varnish VCL has been adapted from the Four Kitchens VCL for Varnish 3.
-# This VCL is for using cache tags with drupal 8. Minor chages of VCL provided by Jeff Geerling.
+# This VCL is for using cache tags with drupal 8. Minor changes of VCL provided by Jeff Geerling.
 
 # Default backend definition. Points to Apache, normally. 
 # Apache is in this config on port 80.
@@ -13,6 +13,13 @@ backend default {
     .connect_timeout = 25s;
     .first_byte_timeout = 300s;
     .between_bytes_timeout = 60s;
+    .probe = {
+        .url = "/";
+        .timeout = 1s;
+        .interval = 5s;
+        .window = 5;
+        .threshold = 3;
+    }
 }
 
 # Access control list for PURGE requests.
@@ -39,7 +46,7 @@ sub vcl_recv {
         if (!client.ip ~ purge) {
             return (synth(405, "Not allowed."));
         }
-        return (hash);
+        return (purge);
     }
 
     # Only allow BAN requests from IP addresses in the 'purge' ACL.
@@ -62,99 +69,30 @@ sub vcl_recv {
         return (synth(200, "Ban added."));
     }
 
-    # Only cache GET and HEAD requests (pass through POST requests).
+    # Only cache GET and HEAD requests.
     if (req.method != "GET" && req.method != "HEAD") {
         return (pass);
     }
 
-    # Pass through any administrative or AJAX-related paths.
-    if (req.url ~ "^/status\.php$" ||
-        req.url ~ "^/update\.php$" ||
-        req.url ~ "^.*json$" ||
-        req.url ~ "/events/calendar" ||
-        req.url ~ "^/admin$" ||
-        req.url ~ "^/admin/.*$" ||
-        req.url ~ "^/node/.*$" ||
-        req.url ~ "^/flag/.*$" ||
-        req.url ~ "^.*/ajax/.*$" ||
-        req.url ~ "^.*/ahah/.*$") {
-           return (pass);
+    # Don't cache authenticated requests.
+    if (req.http.Authorization) {
+        return (pass);
     }
 
-    # Removing cookies for static content so Varnish caches these files.
-    if (req.url ~ "(?i)\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|csv|png|gif|jpeg|jpg|ico|swf|css|js)(\?.*)?$") {
+    # Remove cookies from static files.
+    if (req.url ~ "(?i)\\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|csv|png|gif|jpeg|jpg|ico|swf|css|js)(\\?.*)?$") {
         unset req.http.Cookie;
     }
 
-    # Remove all cookies that Drupal doesn't need to know about. We explicitly
-    # list the ones that Drupal does need, the SESS and NO_CACHE. If, after
-    # running this code we find that either of these two cookies remains, we
-    # will pass as the page cannot be cached.
-    if (req.http.Cookie) {
-        # 1. Append a semi-colon to the front of the cookie string.
-        # 2. Remove all spaces that appear after semi-colons.
-        # 3. Match the cookies we want to keep, adding the space we removed
-        #    previously back. (\1) is first matching group in the regsuball.
-        # 4. Remove all other cookies, identifying them by the fact that they have
-        #    no space after the preceding semi-colon.
-        # 5. Remove all spaces and semi-colons from the beginning and end of the
-        #    cookie string.
-        set req.http.Cookie = ";" + req.http.Cookie;
-        set req.http.Cookie = regsuball(req.http.Cookie, "; +", ";");
-        set req.http.Cookie = regsuball(req.http.Cookie, ";(SESS[a-z0-9]+|SSESS[a-z0-9]+|NO_CACHE)=", "; \1=");
-        set req.http.Cookie = regsuball(req.http.Cookie, ";[^ ][^;]*", "");
-        set req.http.Cookie = regsuball(req.http.Cookie, "^[; ]+|[; ]+$", "");
-
-        if (req.http.Cookie == "") {
-            # If there are no remaining cookies, remove the cookie header. If there
-            # aren't any cookie headers, Varnish's default behavior will be to cache
-            # the page.
-            unset req.http.Cookie;
-        }
-        else {
-            # If there is any cookies left (a session or NO_CACHE cookie), do not
-            # cache the page. Pass it on to Apache directly.
-            return (pass);
-        }
-    }
+    return (hash);
 }
 
-# Set a header to track a cache HITs and MISSes.
-sub vcl_deliver {
-    # Remove ban-lurker friendly custom headers when delivering to client.
-    unset resp.http.X-Url;
-    unset resp.http.X-Host;
-    # Comment these for easier Drupal cache tag debugging in development.
-    unset resp.http.Cache-Tags;
-    unset resp.http.X-Drupal-Cache-Contexts;
-
-
-    unset resp.http.X-Drupal-Cache;
-    unset resp.http.Expires;
-
-    #set resp.http.Access-Control-Allow-Origin = "*";
-    #set resp.http.Access-Control-Allow-Methods = "GET, OPTIONS, PATCH";
-    #set resp.http.Access-Control-Allow-Headers = "*";
-
-    set resp.http.X-Powered-By = "Text";
-    set resp.http.X-Generator = "...Serendipity";
-    set resp.http.Server = "apl3b";
-
-    if (obj.hits > 0) {
-        set resp.http.Cache-Tags = "HIT";
-    }
-    else {
-        set resp.http.Cache-Tags = "MISS";
-    }
-}
-
-# Instruct Varnish what to do in the case of certain backend responses (beresp).
 sub vcl_backend_response {
     # Set ban-lurker friendly custom headers.
     set beresp.http.X-Url = bereq.url;
     set beresp.http.X-Host = bereq.http.host;
 
-    # Cache 404s, 301s, at 500s with a short lifetime to protect the backend.
+    # Cache 404s, 301s, and 500s with a short lifetime to protect the backend.
     if (beresp.status == 404 || beresp.status == 301 || beresp.status == 500) {
         set beresp.ttl = 10m;
     }
@@ -163,7 +101,7 @@ sub vcl_backend_response {
     # (?i) denotes case insensitive in PCRE (perl compatible regular expressions).
     # This list of extensions appears twice, once here and again in vcl_recv so
     # make sure you edit both and keep them equal.
-    if (bereq.url ~ "(?i)\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|csv|png|gif|jpeg|jpg|ico|swf|css|js)(\?.*)?$") {
+    if (bereq.url ~ "(?i)\\.(pdf|asc|dat|txt|doc|xls|ppt|tgz|csv|png|gif|jpeg|jpg|ico|swf|css|js)(\\?.*)?$") {
         unset beresp.http.set-cookie;
     }
 
@@ -171,3 +109,10 @@ sub vcl_backend_response {
     set beresp.grace = 6h;
 }
 
+sub vcl_deliver {
+    if (obj.hits > 0) {
+        set resp.http.X-Cache = "HIT";
+    } else {
+        set resp.http.X-Cache = "MISS";
+    }
+}
