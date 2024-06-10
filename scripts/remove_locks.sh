@@ -1,0 +1,1 @@
+gunzip -c ~/nightly/db.sql.gz | sed ' /LOCK TABLES .* WRITE;/d' | tee >(gzip > db_modified.sql.gz) > >(logger -t sql_modification)
