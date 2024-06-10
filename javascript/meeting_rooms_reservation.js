@@ -669,7 +669,11 @@ $('#edit-date').change(function(e) {
           if ((room_id == '839' ||room_id == '840' ||room_id == '800')  && ch_date >= startDate && ch_date <= endDate) {
               messages = ['The Terrazas Branch meeting rooms are unavailable through May 19, 2024.'];
           } else 
+		  var startDateAOK = Date.parse('June 17, 2024');
 
+		  if (room_id == '790'  && ch_date >= startDateAOK) {
+					   messages = ['The Old Quary Branch meeting room is unavailable starting June 17, 2024.'];
+				   } else 
 
 		  if (ch_date.format('d') == 0 && notIncludes) {
 			messages = ['This location is closed on Sunday.'];
