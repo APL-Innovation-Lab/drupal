@@ -20,7 +20,7 @@
         "drupal/advagg": "^4.0",
         "drupal/asset_injector": "^2",
         "drupal/backup_migrate": "^5.0",
-        "drupal/better_exposed_filters": "^6",
+        "drupal/better_exposed_filters": "6.0.3",
         "drupal/calendar": "^1.0@alpha",
         "drupal/calendar_view": "^1.0",
         "drupal/colorbox": "^1.7",
@@ -57,7 +57,7 @@
         "drupal/iframe": "^2.12",
         "drupal/jquery_ui_resizable": "^1.0",
         "drupal/jsonapi_explorer": "^1.1",
-        "drupal/jsonapi_extras": "^3.14",
+        "drupal/jsonapi_extras": "3.23",
         "drupal/jsonapi_permission": "^1.2",
         "drupal/jwt": "^2.0",
         "drupal/key": "^1.17",
@@ -89,7 +89,7 @@
         "drupal/security_review": "^1.0",
         "drupal/simple_styleguide": "^1.8",
         "drupal/single_datetime": "^1.7",
-        "drupal/smart_date": "^3.3",
+        "drupal/smart_date": "3.6.1",
         "drupal/snippet_manager": "^1.8",
         "drupal/superfish": "^1.3",
         "drupal/theme_switcher": "^1.2",
@@ -128,10 +128,10 @@
         "sort-packages": true,
         "bin-dir": "/usr/local/bin",
         "allow-plugins": {
-            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
             "endroid/installer": true,
-            "zodiacmedia/drupal-libraries-installer": true,
-            "drupal/core-composer-scaffold": true
+            "composer/installers": true,
+            "zodiacmedia/drupal-libraries-installer": true
         }
     },
     "extra": {
