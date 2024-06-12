@@ -1,0 +1,20 @@
+uuid: 0c9753e0-764b-4fc2-9c67-1f90fc96ed4b
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: event datetime sync'
+id: ultimate_cron_queue_feeds_feed_refresh__event_datetime_sync
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

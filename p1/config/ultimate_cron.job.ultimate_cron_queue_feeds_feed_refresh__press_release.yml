@@ -1,0 +1,20 @@
+uuid: 3403ce17-36dd-4071-8b69-b4d201dc0943
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Press Release'
+id: ultimate_cron_queue_feeds_feed_refresh__press_release
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

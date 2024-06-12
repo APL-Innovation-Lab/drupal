@@ -1,0 +1,20 @@
+uuid: 392cf492-f2a7-4e56-bb3f-5047ea977e03
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Audience'
+id: ultimate_cron_queue_feeds_feed_refresh__audience
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

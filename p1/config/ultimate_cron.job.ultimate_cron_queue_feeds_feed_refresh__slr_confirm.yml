@@ -1,0 +1,20 @@
+uuid: 3a272f6d-92f4-486e-920d-851cf29f7468
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: SLR Confirm'
+id: ultimate_cron_queue_feeds_feed_refresh__slr_confirm
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

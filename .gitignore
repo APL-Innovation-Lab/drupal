@@ -1,3 +1,9 @@
+# Exclude LDAP configuration files
+ldap_authentication.settings.yml
+ldap_servers.server.*.yml
+ldap_servers.settings.yml
+ldap_user.settings.yml
+
 # System files
 *.DS_Store
 Thumbs.db

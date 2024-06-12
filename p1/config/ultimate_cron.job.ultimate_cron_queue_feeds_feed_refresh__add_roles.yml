@@ -1,0 +1,20 @@
+uuid: 5b5a46fd-2b62-4536-80a9-18cb365f2987
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Add Roles'
+id: ultimate_cron_queue_feeds_feed_refresh__add_roles
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,20 @@
+uuid: cfba0d17-fe60-4f2d-93eb-62eb2f9f0bdc
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Keyword Match'
+id: ultimate_cron_queue_feeds_feed_refresh__keyword_match
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

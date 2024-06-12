@@ -1,0 +1,20 @@
+uuid: 7456a1cf-c619-44f2-b80f-60d4b01b65a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: AHC Donation'
+id: ultimate_cron_queue_feeds_feed_refresh__ahc_donation
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

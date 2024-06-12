@@ -1,0 +1,20 @@
+uuid: 026de33c-85e6-43d2-91cb-73b8b7c9a5ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Zine'
+id: ultimate_cron_queue_feeds_feed_refresh__zine
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database
