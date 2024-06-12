@@ -1,0 +1,20 @@
+uuid: 2a77d245-688f-4461-b9c7-3b26991a0fac
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Recommendation Slide'
+id: ultimate_cron_queue_feeds_feed_refresh__recommendation_slide
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

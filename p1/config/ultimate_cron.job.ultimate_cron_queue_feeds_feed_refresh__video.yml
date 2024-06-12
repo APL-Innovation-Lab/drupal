@@ -1,0 +1,20 @@
+uuid: d7eac95d-2cf1-4334-8603-447c1452f05a
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Video'
+id: ultimate_cron_queue_feeds_feed_refresh__video
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

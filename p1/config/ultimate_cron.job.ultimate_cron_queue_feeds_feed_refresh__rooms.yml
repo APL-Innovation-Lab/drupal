@@ -1,0 +1,20 @@
+uuid: e6c73964-65cf-4625-9671-ec6b214d33ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Rooms'
+id: ultimate_cron_queue_feeds_feed_refresh__rooms
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

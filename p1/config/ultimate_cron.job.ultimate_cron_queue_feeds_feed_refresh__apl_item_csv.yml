@@ -1,0 +1,20 @@
+uuid: a5dea446-0439-474a-a5be-5a353864abbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: APL Item CSV'
+id: ultimate_cron_queue_feeds_feed_refresh__apl_item_csv
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

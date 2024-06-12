@@ -1,0 +1,20 @@
+uuid: 09c79f8f-c18a-4753-ad92-9dea1b44ef95
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Job Portal Page'
+id: ultimate_cron_queue_feeds_feed_refresh__job_portal_page
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

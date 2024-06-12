@@ -1,0 +1,20 @@
+uuid: aeac0387-e49e-470b-a550-fbf4406a957a
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: oakwood'
+id: ultimate_cron_queue_feeds_feed_refresh__oakwood
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,20 @@
+uuid: ca284c87-ddd1-47eb-a810-e9c49e31a0fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Item Facets'
+id: ultimate_cron_queue_feeds_feed_refresh__item_facets
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

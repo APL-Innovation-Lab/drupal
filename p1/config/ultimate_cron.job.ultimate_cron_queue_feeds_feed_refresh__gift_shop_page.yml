@@ -1,0 +1,20 @@
+uuid: 95bad834-313e-4a26-9a2c-7496b89947fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Gift Shop Page'
+id: ultimate_cron_queue_feeds_feed_refresh__gift_shop_page
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

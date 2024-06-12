@@ -1,0 +1,20 @@
+uuid: 17f993b8-eb4c-44ff-a2a0-19f30594b271
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Fullscreen Image'
+id: ultimate_cron_queue_feeds_feed_refresh__fullscreen_image
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

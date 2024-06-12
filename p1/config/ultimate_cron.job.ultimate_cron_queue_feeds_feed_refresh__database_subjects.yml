@@ -1,0 +1,20 @@
+uuid: 9425de4e-fe55-4f32-8ba4-193356cf9662
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Database Subjects'
+id: ultimate_cron_queue_feeds_feed_refresh__database_subjects
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

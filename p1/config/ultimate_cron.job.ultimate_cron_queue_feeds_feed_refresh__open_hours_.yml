@@ -1,0 +1,20 @@
+uuid: d3f8b509-f1d5-4e25-93e3-41ca670468c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Open Hours'
+id: ultimate_cron_queue_feeds_feed_refresh__open_hours_
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

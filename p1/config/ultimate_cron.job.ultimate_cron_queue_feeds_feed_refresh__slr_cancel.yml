@@ -1,0 +1,20 @@
+uuid: 338bd513-ff2b-4508-b34c-549dae0fe0d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: SLR Cancel'
+id: ultimate_cron_queue_feeds_feed_refresh__slr_cancel
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

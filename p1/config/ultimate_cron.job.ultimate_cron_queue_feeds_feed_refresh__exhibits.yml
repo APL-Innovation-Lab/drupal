@@ -1,0 +1,20 @@
+uuid: f7797c9a-1e7c-4fdf-aea4-0a5a4823871b
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: Exhibits'
+id: ultimate_cron_queue_feeds_feed_refresh__exhibits
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

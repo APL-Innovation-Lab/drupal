@@ -1,0 +1,20 @@
+uuid: 67201791-2e41-42f2-b3a0-9bed52490d38
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: APL Item'
+id: ultimate_cron_queue_feeds_feed_refresh__apl_item
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database
