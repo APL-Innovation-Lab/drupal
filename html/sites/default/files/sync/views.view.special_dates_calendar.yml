@@ -8,7 +8,6 @@ dependencies:
     - node.type.special_dates
   module:
     - datetime
-    - fullcalendar_view
     - node
     - options
 id: special_dates_calendar
@@ -298,86 +297,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: fullcalendar_view_display
+        type: default
         options:
-          default_date_source: first
-          defaultDate: ''
-          start: field_special_date
-          end: ''
-          title: title
-          left_buttons: 'prev,next today'
-          right_buttons: 'dayGridMonth,timeGridWeek,timeGridDay,listDay'
-          default_view: dayGridMonth
-          firstDay: '0'
-          nav_links: 1
-          timeFormat: 'hh:mm a'
-          allowEventOverlap: 1
-          updateAllowed: 1
-          updateConfirm: 1
-          defaultLanguage: en
-          languageSelector: 0
-          dialogWindow: 0
-          openEntityInNewTab: 1
-          createEventLink: 0
-          eventLimit: '2'
-          tax_field: ''
-          vocabularies: ''
-          color_bundle:
-            ahc_donation: '#3a87ad'
-            ahc_page: '#3a87ad'
-            ahc_protests: '#3a87ad'
-            alert: '#3a87ad'
-            apl_item: '#3a87ad'
-            apl_item_import: '#3a87ad'
-            apl_site_content: '#3a87ad'
-            apltv_recommendation_slide: '#3a87ad'
-            archives_index: '#3a87ad'
-            article: '#3a87ad'
-            atxyz: '#3a87ad'
-            blog: '#3a87ad'
-            book_a_librarian: '#3a87ad'
-            champion_image: '#3a87ad'
-            database: '#3a87ad'
-            event: '#3a87ad'
-            fullscreen_image: '#3a87ad'
-            general_content: '#3a87ad'
-            group: '#3a87ad'
-            hero_image: '#3a87ad'
-            highighted_images: '#3a87ad'
-            how_to: '#3a87ad'
-            image_rotator: '#3a87ad'
-            job_portal_assistance_request: '#3a87ad'
-            keyword_match: '#3a87ad'
-            page: '#3a87ad'
-            panel: '#3a87ad'
-            passport_reservation: '#3a87ad'
-            personal_picks: '#3a87ad'
-            playlist: '#3a87ad'
-            quest_log: '#3a87ad'
-            reference_stats: '#3a87ad'
-            reflection: '#3a87ad'
-            room_reservation: '#3a87ad'
-            sales_events_page: '#3a87ad'
-            screen: '#3a87ad'
-            shared_learning_room_reservation: '#3a87ad'
-            slide: '#3a87ad'
-            slr_reservation_2019: '#3a87ad'
-            special_dates: '#3a87ad'
-            srp_activity: '#3a87ad'
-            suggest_a_title: '#3a87ad'
-            teen_page: '#3a87ad'
-            tour: '#3a87ad'
-            ungerbock_event: '#3a87ad'
-            url_for_display: '#3a87ad'
-            venue_request: '#3a87ad'
-            volunteer: '#3a87ad'
-            volunteer_opportunity: '#3a87ad'
-            webform: '#3a87ad'
-            zine: '#3a87ad'
-          rrule: ''
-          duration: ''
-          bundle_type: ''
-          classes: ''
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
       query:
@@ -391,7 +315,10 @@ display:
       relationships: {  }
       header: {  }
       footer: {  }
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:

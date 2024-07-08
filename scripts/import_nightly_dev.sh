@@ -4,10 +4,10 @@
 set -e
 
 # Remote server address
-REMOTE_SERVER="dev01"
+REMOTE_SERVER="dev01c"
 
 # Local file path where the dump is saved
-LOCAL_DUMP_FILE="/Users/bryce/nightly/db_modified.sql.gz"
+LOCAL_DUMP_FILE="db_modified.sql.gz"
 
 # Log file path
 LOG_FILE="/Users/bryce/nightly/db_import.log"

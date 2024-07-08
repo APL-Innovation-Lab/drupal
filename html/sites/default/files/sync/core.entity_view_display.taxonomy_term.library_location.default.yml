@@ -70,24 +70,6 @@ third_party_settings:
               items_per_page: none
             weight: 1
             additional: {  }
-          49e4a7c2-e4dd-4211-a8a7-ce28ec61f225:
-            uuid: 49e4a7c2-e4dd-4211-a8a7-ce28ec61f225
-            region: content
-            configuration:
-              id: 'field_block:taxonomy_term:library_location:field_do_not_index'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: boolean
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
         third_party_settings: {  }
 id: taxonomy_term.library_location.default
 targetEntityType: taxonomy_term

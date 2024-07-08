@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Input and output files
-LOCAL_DUMP_FILE="db.sql.gz" # ~/nightly/db.sql.gz
+#LOCAL_DUMP_FILE="db.sql.gz" # ~/nightly/db.sql.gz
+LOCAL_DUMP_FILE="/Users/bryce/nightly/db.sql.gz"
 MODIFIED_DUMP_FILE="db_modified.sql.gz"
 TEMP_DIR=$(mktemp -d)
 

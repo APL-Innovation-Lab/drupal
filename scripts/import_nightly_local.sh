@@ -3,7 +3,8 @@
 cd ~/drupal
 
 # Local file path where the dump is saved
-LOCAL_DUMP_FILE="/Users/bryce/nightly/db.sql.gz"
+#LOCAL_DUMP_FILE="/Users/bryce/nightly/db.sql.gz"
+LOCAL_DUMP_FILE="/Users/bryce/drupal/scripts/db_modified.sql.gz"
 
 # Log file path
 LOG_FILE="/Users/bryce/nightly/db_import.log"

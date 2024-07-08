@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - field.field.node.archives_index.feeds_item
     - field.field.node.archives_index.field_abstract
     - field.field.node.archives_index.field_accessno
@@ -60,7 +61,7 @@ dependencies:
 third_party_settings:
   layout_builder:
     enabled: true
-    allow_custom: false
+    allow_custom: true
     sections:
       -
         layout_id: layout_onecol
@@ -68,108 +69,19 @@ third_party_settings:
           label: ''
           context_mapping: {  }
         components:
-          7ea78563-5abc-4937-aabd-aa74a2d85e3a:
-            uuid: 7ea78563-5abc-4937-aabd-aa74a2d85e3a
+          265428a0-3a62-4bf0-8ce0-1af66e227bca:
+            uuid: 265428a0-3a62-4bf0-8ce0-1af66e227bca
             region: content
             configuration:
-              id: 'extra_field_block:node:archives_index:links'
+              id: 'inline_block:basic'
+              label: redirect
               label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_revision_id: 34
+              block_serialized: null
             weight: 0
-            additional: {  }
-          366efa3f-ddb3-4c15-8202-a6001c95e04c:
-            uuid: 366efa3f-ddb3-4c15-8202-a6001c95e04c
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_start_date'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: daterange_default
-                label: above
-                settings:
-                  timezone_override: ''
-                  format_type: medium
-                  separator: '-'
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          f41491a9-109e-4716-bb54-3fa327d4ba88:
-            uuid: f41491a9-109e-4716-bb54-3fa327d4ba88
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_abstract'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          56d6964d-321b-42f0-818f-d2bfce83b3a7:
-            uuid: 56d6964d-321b-42f0-818f-d2bfce83b3a7
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_bioghist'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
-          6a7310d7-2604-49b7-bd6f-d666514080d3:
-            uuid: 6a7310d7-2604-49b7-bd6f-d666514080d3
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_scopecontent'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          64b99463-3f3d-4a91-a2bb-3f63b8d257b0:
-            uuid: 64b99463-3f3d-4a91-a2bb-3f63b8d257b0
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_dsc'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
-          996c5914-aa53-499c-9f0f-5875c3ce6f9c:
-            uuid: 996c5914-aa53-499c-9f0f-5875c3ce6f9c
-            region: content
-            configuration:
-              id: 'field_block:node:archives_index:field_odd'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 6
             additional: {  }
         third_party_settings: {  }
 id: node.archives_index.default

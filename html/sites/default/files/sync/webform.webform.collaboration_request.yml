@@ -109,6 +109,17 @@ elements: |-
       '#title': 'Will this collaboration be free and open to the public?'
       '#options': yes_no
       '#options_display': two_columns
+    will_there_be_a_cost_to_apl_:
+      '#type': radios
+      '#title': 'Will there be a cost to APL?'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No'
+      '#options_display': two_columns
+      '#other__option_label': ''
+    if_yes_how_much_:
+      '#type': textfield
+      '#title': 'If yes, how much?'
 css: ''
 javascript: ''
 settings:

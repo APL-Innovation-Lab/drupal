@@ -676,7 +676,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'William.Donaldson@austintexas.gov,Doreen.Boyd@austintexas.gov'
+      to_mail: 'William.Donaldson@austintexas.gov,Doreen.Boyd@austintexas.gov,ty.denton@austintexas.gov'
       to_options: {  }
       bcc_mail: ''
       bcc_options: {  }
