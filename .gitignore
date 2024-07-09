@@ -1,8 +1,16 @@
+html/themes/contrib/*
+
 # Exclude LDAP configuration files
 ldap_authentication.settings.yml
 ldap_servers.server.*.yml
 ldap_servers.settings.yml
 ldap_user.settings.yml
+
+*.sql.gz
+
+html/themes/contrib/uswds/assets/*
+scripts/venv/*
+#scripts/db_modified.sql.gz
 
 # System files
 *.DS_Store
