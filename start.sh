@@ -13,7 +13,7 @@ then
 fi
 
 echo "Options:"
-echo "1. Run Import Script"
+echo "1. Import nightly backup"
 echo "2. Start ddev"
 read -p "Enter your choice: " choice
 
@@ -24,13 +24,15 @@ case $choice in
         
         ddev stop --unlist drupal
         ddev composer update
-       # ddev import-db --file=aplcms-minus.sql.gz
+        cp ~/nightly/db.sql.gz .
+        ddev import-db --file=db.sql.gz
         ddev drush cr
         ddev drush user:password drupaladmin '111'
         ddev launch user
         ;;
     2)
         # Starting and launching ddev
+        ddev stop --unlist drupal
         ddev launch
         ;;
     *)
